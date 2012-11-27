@@ -1,0 +1,22 @@
+
+li {
+    border: 0px solid;
+    border-bottom-width: 1px;
+    position: relative;
+}
+li:first-child {
+    border-top-width: 1px;
+}
+li input[type=text], li span {
+    border: none;
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 14pt;
+    font-weight: normal;
+}
+.done {
+    text-decoration: underline;
+}
+li .text {
+}
