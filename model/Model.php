@@ -29,13 +29,6 @@ class Model
         return new self(Pdb::lastInsertId());
     }
 
-    public static function read($conds = array())
-    {
-        list($tables, $conds) = self::buildDbArg($conds);
-        $self = get_called_class();
-        return Pdb::fetchAll('*', $tables, $conds);
-    }
-
     protected function info() // this will happen?
     {
         $self = get_called_class();

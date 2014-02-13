@@ -4,6 +4,8 @@
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
 
+define('APP_ROOT', dirname(__DIR__));
+
 // auto require when using class (model)
 spl_autoload_register(function ($classname) {
     $filename = str_replace('\\', DIRECTORY_SEPARATOR, $classname) . '.php';

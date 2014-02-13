@@ -1,5 +1,4 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION'); // in fact, even if this is exucted by user, would it show anything?
 /**
  * @file    common
  * @author  ryan <cumt.xiaochi@gmail.com>
@@ -28,10 +27,9 @@ define('DEFAULT_LOGIN_REDIRECT_URL', ROOT); // 登录后的默认导向页面
 $config['site']['name'] = 'EnMond';
 
 $config['db'] = array(
-    'host' => 'localhost',
-    'dbname' => 'jewelry',
+    'dsn' => 'mysql:host=localhost;dbname=google',
     'username' => 'root',
-    'password' => 'xiaosan'
+    'password' => ''
 );
 
 if (ON_SERVER) {

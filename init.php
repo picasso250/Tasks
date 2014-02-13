@@ -4,7 +4,8 @@
  */
 function init_var()
 {
-    $req_uri = i($_SERVER['REDIRECT_URL'], reset(explode('?', $_SERVER['REQUEST_URI'])));
+    $arr = explode('?', $_SERVER['REQUEST_URI']);
+    $req_uri = i($_SERVER['REDIRECT_URL'], reset($arr));
     $arr = explode('/', trim($req_uri, '/'));
 
     // c is controller

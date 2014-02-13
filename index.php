@@ -2,6 +2,8 @@
 
 error_reporting(E_ALL);
 
+require __DIR__.'/vendor/autoload.php';
+
 require __DIR__.'/config/common.php';
 
 require __DIR__.'/lib/function.php';
@@ -14,4 +16,4 @@ init_env();
 
 require 'logic.php';
 
-inlcude 'view.html';
+include 'view.html';
