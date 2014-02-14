@@ -1,21 +1,21 @@
 <html>
 <head>
-    <title>X Tasks</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+  <title>X Tasks</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
-    <h1>Tasks</h1>
-    <form>
-        <ul>
-            <?php foreach ($tasks as $task): ?>
-                <li>
-                    <input type="checkbox">
-                    <input type="text" value="<?= $task->text ?>">
-                </li>
-            <?php endforeach ?>
-        </ul>
-    </form>
+  <h1>Tasks</h1>
+  <form>
+    <ul>
+      <?php foreach ($tasks as $task): ?>
+        <li>
+          <input type="checkbox">
+          <input type="text" value="<?= $task->name ?>">
+        </li>
+      <?php endforeach ?>
+    </ul>
+  </form>
 </body>
 </html>
