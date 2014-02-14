@@ -16,4 +16,3 @@ init_env();
 
 require 'logic.php';
 
-include 'view.html';

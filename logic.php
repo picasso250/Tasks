@@ -6,4 +6,10 @@ ORM::configure('password', $config['db']['password']);
 
 $group = isset($_COOKIE['group']) ? $_COOKIE['group'] : 0;
 
-$tasks = ORM::forTable('task')->findMany();
+$f = __DIR__."/controller/$action.php";
+if (file_exists($f)) {
+    include $f;
+} else {
+    echo "no file $f";
+    exit();
+}

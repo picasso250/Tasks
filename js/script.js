@@ -14,34 +14,63 @@ $(function () {
 
     view.refreshAll();
 
-    var newItemFunc = function () {
-        var newItem = $('<li> <input type="checkbox"> <input type="text" value=""> </li>');
-        console.log(newItem);
-        $('ul').append(newItem);
-        view.refreshAll();
-        newItem.find('input[type=text]').focus();
+    var newItemFunc = function (item) {
+        var data = {
+            action: 'add',
+            name: item.value
+        };
+        $.post('?', data, function (ret) {
+            if (ret.code != 0) {
+                alert('error');
+            } else {
+                $(item).data('id', ret.data.id);
+                nextLine(item);
+            }
+        }, 'json');
     };
 
     var saveItem = function (id, item) {
         var data = {
+            action: 'edit',
             id: id,
             name: item.value
         };
         $.post('?', data, function (ret) {
-            console.log(ret);
+            if (ret.code != 0) {
+                alert('error');
+            } else {
+                nextLine(item);
+            }
         }, 'json');
-    }
+    };
 
-    $('input.task-item').on('keyup', function (e) {
+    var nextLine = function (item) {
+        var total = $('li').length;
+        var curInput = $(item);
+        var cur = curInput.parents('li').index();
+        var isLast = (total === (cur + 1));
+        var isEmpty = (curInput.val() === '');
+        if (isLast && !isEmpty) {
+            var newItem = $('<li>'+$('#itemTpl').html()+'</li>');
+            $('ul').append(newItem);
+            view.refreshAll();
+            newItem.find('input[type=text]').focus().on('keyup', keyupFunc);
+        }
+
+    };
+
+    var keyupFunc = function (e) {
         var id = $(this).data('id');
         if (e.keyCode == 13) {
             if (id) {
                 saveItem(id, this);
             } else {
-                newItemFunc();
+                newItemFunc(this);
             }
         };
-    });
+    };
+
+    $('input.task-item').on('keyup', keyupFunc);
 
     $('input[type=checkbox]').change(function () {
         var that = $(this);
