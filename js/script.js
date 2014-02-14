@@ -1,6 +1,3 @@
-var d = function (arg) {
-    console.log(arg);
-};
 
 (function (window) {
     var view = {
@@ -17,21 +14,33 @@ $(function () {
 
     view.refreshAll();
 
-    $('form').submit(function () {
-        var total = $('li').length;
-        var curInput = $('input[type=text]:focus');
-        var cur = curInput.parents('li').index();
-        var isLast = (total === (cur + 1));
-        var isEmpty = (curInput.val() === '');
-        d(isLast);
-        d(isEmpty);
-        if (isLast && !isEmpty) {
-            var newItem = $('<li> <input type="checkbox"> <input type="text" value=""> </li>');
-            $('ul').append(newItem);
-            view.refreshAll();
-            newItem.find('input[type=text]').focus();
-        }
-        return false;
+    var newItemFunc = function () {
+        var newItem = $('<li> <input type="checkbox"> <input type="text" value=""> </li>');
+        console.log(newItem);
+        $('ul').append(newItem);
+        view.refreshAll();
+        newItem.find('input[type=text]').focus();
+    };
+
+    var saveItem = function (id, item) {
+        var data = {
+            id: id,
+            name: item.value
+        };
+        $.post('?', data, function (ret) {
+            console.log(ret);
+        }, 'json');
+    }
+
+    $('input.task-item').on('keyup', function (e) {
+        var id = $(this).data('id');
+        if (e.keyCode == 13) {
+            if (id) {
+                saveItem(id, this);
+            } else {
+                newItemFunc();
+            }
+        };
     });
 
     $('input[type=checkbox]').change(function () {
