@@ -59,14 +59,36 @@ $(function () {
 
     };
 
+    var delItem = function(id, item) {
+        var data = {
+            action: 'del',
+            id: id
+        };
+        $.post('?', data, function (ret) {
+            if (ret.code != 0) {
+                alert('error');
+            } else {
+
+            }
+        }, 'json');
+    };
+
     var keyupFunc = function (e) {
         var id = $(this).data('id');
-        if (e.keyCode == 13) {
+        if (e.keyCode == 13) { // Enter
             if (id) {
                 saveItem(id, this);
             } else {
                 newItemFunc(this);
             }
+        };
+        if (e.keyCode == 8 && !this.value) { // backspace
+            var li = $(this).parent();
+            $('li').eq(li.index()-1).find('input[type=text]').focus();
+            li.remove();
+            if (id) {
+                delItem(id, this);
+            };
         };
     };
 
