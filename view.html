@@ -10,8 +10,8 @@
   <ul>
     <?php foreach ($tasks as $task): ?>
       <li>
-        <input type="checkbox">
-        <input type="text" class="task-item" data-id="<?= $task->id ?>" value="<?= $task->name ?>">
+        <input type="checkbox" <?= $task->is_done ? 'checked' : '' ?>>
+        <input type="text" class="task-item <?= $task->is_done ? 'done' : '' ?>" data-id="<?= $task->id ?>" value="<?= $task->name ?>" <?= $task->is_done ? 'disabled' : '' ?>>
       </li>
     <?php endforeach ?>
     <li>

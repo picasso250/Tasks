@@ -98,9 +98,21 @@ $(function () {
         var that = $(this);
         var input = that.siblings('input[type=text]');
         if (that.prop('checked')) {
-            input.addClass('done');
+            input.addClass('done').prop('disabled', true);
         } else {
-            input.removeClass('done');
+            input.removeClass('done').prop('disabled', false);
         }
+
+        var id = input.data('id');
+        var data = {
+            action: 'edit',
+            id: id,
+            is_done: that.prop('checked') ? 1 : 0
+        };
+        $.post('?', data, function (ret) {
+            if (ret.code != 0) {
+                alert('error');
+            }
+        }, 'json');
     });
 });

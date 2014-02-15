@@ -1,11 +1,7 @@
 
 li {
-    border: 0px solid;
-    border-bottom-width: 1px;
+    border-bottom: 1px solid #A2A2A2;
     position: relative;
-}
-li:first-child {
-    border-top-width: 1px;
 }
 li input[type=text], li span {
     border: none;
@@ -16,7 +12,7 @@ li input[type=text], li span {
     font-weight: normal;
 }
 .done {
-    text-decoration: underline;
+    text-decoration: line-through;
 }
 li .text {
 }

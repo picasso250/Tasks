@@ -8,7 +8,7 @@ if (empty($t)) {
 }
 
 foreach (_post() as $key => $value) {
-    if (in_array($key, array('name', 'order_', 'indent', 'group'))) {
+    if (in_array($key, array('name', 'order_', 'indent', 'group', 'is_done'))) {
         $t->set($key, $value);
     }
 }
