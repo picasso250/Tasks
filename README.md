@@ -13,8 +13,8 @@ maybe group is just an attribute of task
 Todo
 ------------
 
-- [x] edit
-- [x] add
+- [X] edit
+- [X] add
 - [ ] delete
 - [ ] indent
 - [ ] detail
